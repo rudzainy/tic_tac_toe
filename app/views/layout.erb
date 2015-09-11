@@ -19,15 +19,26 @@
 </head>
 <body>
   <div class="header">
-    <a href="/"><img src="/image/logo.png" width="30px" height="30px" alt="Tic Tac Toe"></a>&nbsp;
-    <% if logged_in? %>
-  <%= session[:username] %>&nbsp;
-    <a href="/logout">Log Out</a>
-  <% end %>
+    <div class="header-container">
+      <div class="logo">
+        <a href="/"><img src="/image/logo.png" width="40px" height="40px" alt="Tic Tac Toe"></a>
+      </div>
+      <div class="logo-text">
+        TIC<br>TAC<br>TOE
+      </div>
+      <% if logged_in? %>
+      <div class="nav">
+        Hi <%= session[:username] %>!
+      </div>
+      <div class="nav">
+        <a href="/logout">Log Out</a>
+      </div>
+    <% end %>
+    <% if @flash %>
+      <div class="flash"><%= @flash %></div>
+    <% end %>
+    </div>
   </div>
-  <% if @flash %>
-    <div class="flash"><%= @flash %></div>
-  <% end %>
   <%= yield %>
 </body>
 </html>
