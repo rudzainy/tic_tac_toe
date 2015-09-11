@@ -9,6 +9,8 @@ $(document).ready(function() {
 	drawBoard();
 	populateBoard(game_state);
 	playerMove();
+
+	// replayGame(game_state);
   
 });
 
@@ -56,7 +58,7 @@ function populateBoard(game_state){
 
 	// Chops off the moves from a string into an array
 	var moves = game_state.match(/(.{3})/g);
-
+ 	
 	// Insert moves into coresponding boxes
 	for(count = 0; count < moves.length; count++){
 		var box = document.getElementById('' + parseInt(moves[count][0]) + parseInt(moves[count][1]) + '');
@@ -71,7 +73,6 @@ function playerMove(){
 
 		// Checks if the clicked box is empty
 		if($(this).text() == ""){
-			debugger
 
 			// Updates the game state
 			game_state += box_id + player_shape;
@@ -96,3 +97,21 @@ function playerMove(){
 function winningCondition(){
 	
 }
+
+// Replays the entire game tep by step
+function replayGame(game_state){
+
+	// Chops off the moves from a string into an array
+	moves = game_state.match(/(.{3})/g);
+
+	// Insert moves into coresponding boxes
+	$.each(moves, function(count, value){ //for(count = 0; count < moves.length; count++){
+		
+		// Set delay to 1.5 seconds
+		setTimeout(function() {
+			debugger
+      box = document.getElementById('' + parseInt(moves[count][0]) + parseInt(moves[count][1]) + '');
+			box.innerHTML = moves[count][2];
+     }, 1500);
+	});
+};
