@@ -15,30 +15,30 @@ $(document).ready(function() {
 // Draws the game board
 function drawBoard(){
 	
-	row = 0;
-	index = 0;
+	var row = 0;
+	var index = 0;
 
 	// Iterate each row of the board
 	while(row < 3) {
-		if(row == 0){
-			position = "left";
+		if(row === 0){
+			var position = "left";
 		}
-		else if(row == 1){
-			position = "center";
+		else if(row === 1){
+			var position = "center";
 		}
 		else{
-			position = "right";
+			var position = "right";
 		}
 
 		// Add a container div for rows
 		$('#board-container').append('<div id="row-' + position + '">')
-		col = 0;
+		var col = 0;
 
 		// Iterate each column in the row
 		while(col < 3) {
 
 			// Condition to draw checkered board
-			if(index % 2 == 0){
+			if(index % 2 === 0){
 				$('#board-container').append('<button id="' + row + '' + col + '" class="box"></button>')
 			}else{
 				$('#board-container').append('<button id="' + row + '' + col + '" class="box" style="background-color: #FFD64A;"></button>')
@@ -55,7 +55,7 @@ function drawBoard(){
 function populateBoard(game_state){
 
 	// Chops off the moves from a string into an array
-	moves = game_state.match(/(.{3})/g);
+	var moves = game_state.match(/(.{3})/g);
 
 	// Insert moves into coresponding boxes
 	for(count = 0; count < moves.length; count++){
@@ -67,20 +67,28 @@ function populateBoard(game_state){
 // Waits for the player to make a move and processes it
 function playerMove(){
 	$(document).on('click', '.box', function(event){
-		box_id = $(this).attr('id');
+		var box_id = $(this).attr('id');
 
-		// Updates the game state
-		game_state += box_id + player_shape;
+		// Checks if the clicked box is empty
+		if($(this).text() == ""){
+			debugger
 
-		// Display the last move on the board
-		var box = document.getElementById('' + parseInt(box_id[0]) + parseInt(box_id[1]) + '');
-		box.innerHTML = player_shape;
-		
-		// Disable the entire board
-		var all_box = document.getElementsByClassName('box')
-		$.each(all_box, function(index, box){
-			box.disabled = true;
-		});
+			// Updates the game state
+			game_state += box_id + player_shape;
+
+			// Display the last move on the board
+			var box = document.getElementById('' + parseInt(box_id[0]) + parseInt(box_id[1]) + '');
+			box.innerHTML = player_shape;
+			
+			// Disable the entire board
+			var all_box = document.getElementsByClassName('box')
+			$.each(all_box, function(index, box){
+				box.disabled = true;
+			});
+		}else{
+			// If the box is not empty, do nothing and wait for player's input
+			playerMove();
+		};
 	});
 };
 
