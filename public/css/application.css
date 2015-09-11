@@ -1,7 +1,7 @@
-#box {
+.box {
 	background-color: #00D7EA;
 	width: 100px;
-	height: 60px;
+	height: 100px;
 	text-align: center;
 	line-height: 1;
 	vertical-align: middle;
@@ -9,19 +9,7 @@
 	padding-bottom: 0;
 	margin: 1px;
 	float: left;
-
-}
-
-#box-alt {
-	background-color: #c0c0c0;
-	width: 100px;
-	height: 100px;
-	text-align: center;
-	line-height: 1;
-	vertical-align: middle;
-	padding-bottom: 0;
-	margin: 1px;
-	float: left;
+	border: none;
 }
 
 #board-container {
@@ -57,7 +45,7 @@ th {
   text-align: left;
 }
 
-button, .button {
+.button {
 	padding: 10px 15px;
 	color: white;
 	background-color: #FFA900;
