@@ -1,7 +1,29 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  console.log( "ready!" );
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  drawTable();
+
+  function drawTable(){
+  	row = 0;
+  	while(row < 3) {
+  		if(row == 0){
+  			position = "left";
+  		}
+  		else if(row == 1){
+  			position = "center";
+  		}
+  		else{
+  			position = "right";
+  		}
+
+  		$('#board-container').append('<div id="row-' + position + '">')
+  		col = 0;
+  		while(col < 3) {
+  			$('#board-container').append('<div id="box">x</div>')
+  			col++;
+  		}
+  		$('#board-container').append('</div>')
+  		row++;
+  	}	
+  };
 });
