@@ -4,6 +4,17 @@
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
+
 th {
   text-align: left;
+}
+
+button, .button {
+	padding: 5px 10px;
+	color: white;
+	background-color: #FF6371;
+	border-radius: .2rem;
+	cursor: pointer; 
+	cursor: hand;
+	border: none;
 }
