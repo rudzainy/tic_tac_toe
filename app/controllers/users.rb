@@ -14,11 +14,10 @@ post '/login' do
 		end
 	elsif params[:action] == "signup"
 		session[:user_id] = User.create(username: @username, password: password)
+		session[:username] = @username
 		redirect to "/lobby"
 	end
 end
-
-	
 
 get '/logout' do
 
