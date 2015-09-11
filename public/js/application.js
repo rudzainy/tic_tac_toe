@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  game_state = "01x02o";
+  game_state = "01o02o";
 	drawTable();
 	populateTable(game_state);
   
@@ -22,7 +22,7 @@ function drawTable(){
 		$('#board-container').append('<div id="row-' + position + '">')
 		col = 0;
 		while(col < 3) {
-			$('#board-container').append('<button id="box[' + row + '][' + col + ']" class="box"></button>')
+			$('#board-container').append('<div id="box[' + row + '][' + col + ']" class="box">x</div>')
 			col++;
 		}
 		$('#board-container').append('</div>')
@@ -31,12 +31,12 @@ function drawTable(){
 };
 
 function populateTable(game_state){ // Import game state
-	all_moves = game_state.match(/(.{3})/g);
+	moves = game_state.match(/(.{3})/g);
 	debugger
-	for(count = 0; count < all_moves.length; count++){
-		move = all_moves[count].split();
-		$('#box[' + move[0] + '][' + move[1] + ']').value = move[2];
-	}
+	for(count = 0; count < moves.length; count++){
+		var box = document.getElementById('box[' + parseInt(moves[count][0]) + '][' + parseInt(moves[count][1]) + ']');
+		box.innerHTML = moves[count][2];
+	};
 };
 
 String.prototype.scan = function (re) {

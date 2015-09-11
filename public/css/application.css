@@ -1,7 +1,7 @@
 .box {
 	background-color: #00D7EA;
 	width: 100px;
-	height: 100px;
+	height: 60px; /* button: 100px, div: 60px */
 	text-align: center;
 	line-height: 1;
 	vertical-align: middle;
@@ -10,6 +10,7 @@
 	margin: 1px;
 	float: left;
 	border: none;
+	color: #000;
 }
 
 #board-container {
