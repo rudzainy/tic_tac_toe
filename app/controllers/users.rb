@@ -2,7 +2,7 @@ post '/login' do
 
 	@username = params[:username]
 	password = params[:password]
-byebug
+
 	if params[:action] == "login"
 		if User.authenticate(@username	, password)
 			session[:user_id] = User.find_by(username: @username).id
