@@ -74,14 +74,19 @@
 	line-height: .95;
 }
 
+.logo-text a {
+	color: #000 !important;
+}
+
 .flash {
-	padding: 0 10px 0 0;
-	margin-top: 15px;
+	padding: 0 5px 0 0;
+	margin-top: 10px;
 	float: right;
 	top: 0;
 	right: 0;
 	position: absolute;
-	border-right: 3px red solid; 
+	border-right: 3px red solid;
+	vertical-align: middle;
 }
 
 .logo {

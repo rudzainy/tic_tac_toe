@@ -24,7 +24,7 @@
         <a href="/"><img src="/image/logo.png" width="40px" height="40px" alt="Tic Tac Toe"></a>
       </div>
       <div class="logo-text">
-        TIC<br>TAC<br>TOE
+        <a href="/">TIC<br>TAC<br>TOE</a>
       </div>
       <% if logged_in? %>
       <div class="nav">
@@ -35,7 +35,7 @@
       </div>
     <% end %>
     <% if @flash %>
-      <div class="flash"><%= @flash %></div>
+      <div class="flash"><%= @flash %><img src="/image/flash_arrow.png" alt=""></div>
     <% end %>
     </div>
   </div>
