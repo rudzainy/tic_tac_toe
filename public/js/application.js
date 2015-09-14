@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	// Import current game state from the server
-  game_state = "02x11o20x22o00x";
+  game_state = "2x4o6x8o0x";
 
   // Set the player's shape either x or o
   player_shape = "x"
@@ -41,9 +41,9 @@ function drawBoard(){
 
 			// Condition to draw checkered board
 			if(index % 2 === 0){
-				$('#board-container').append('<button id="' + row + '' + col + '" class="box"></button>')
+				$('#board-container').append('<button id="' + index + '" class="box"></button>')
 			}else{
-				$('#board-container').append('<button id="' + row + '' + col + '" class="box" style="background-color: #FFD64A;"></button>')
+				$('#board-container').append('<button id="' + index + '" class="box" style="background-color: #FFD64A;"></button>')
 			}
 			index++;
 			col++;
@@ -57,13 +57,13 @@ function drawBoard(){
 function populateBoard(game_state){
 
 	// Chops off the moves from a string into an array
-	var moves = game_state.match(/(.{3})/g);
+	var moves = game_state.match(/(.{2})/g);
  	
 	// Insert moves into coresponding boxes
-	for(count = 0; count < moves.length; count++){
-		var box = document.getElementById('' + parseInt(moves[count][0]) + parseInt(moves[count][1]) + '');
-		box.innerHTML = moves[count][2];
-	};
+	$.each(moves, function(index, value){
+		var box = document.getElementById(value[0]);
+		box.innerHTML = moves[index][1];
+	});
 };
 
 // Waits for the player to make a move and processes it
@@ -78,7 +78,7 @@ function playerMove(){
 			game_state += box_id + player_shape;
 
 			// Display the last move on the board
-			var box = document.getElementById('' + parseInt(box_id[0]) + parseInt(box_id[1]) + '');
+			var box = document.getElementById(box_id[0]);
 			box.innerHTML = player_shape;
 			
 			// Disable the entire board
@@ -90,8 +90,9 @@ function playerMove(){
 			// If the box is not empty, do nothing and wait for player's input
 			playerMove();
 		};
-		if(winningCondition(box_id) == true){
+		if(winningCondition(box_id) === true){
 			winner = player;
+			debugger
 		}
 	});
 };
@@ -99,29 +100,37 @@ function playerMove(){
 // Check the board for a winner
 function winningCondition(box_id){
 	if(box_id[0] === "0"){
-		debugger
+		boxBelow(box_id);
 	}
+	return true;
 };
 
 // Get value of box below
 function boxBelow(box_id){
-	$(document).getElementById('1' + (box_id[1] +1));
+	box = document.getElementById((parseInt(box_id[0]) + 1).toString() + box_id[1]);
+	return box.textContent;
+};
+
+// Get value of box diagonal left below
+function boxBelowLeft(box_id){
+	box = document.getElementById("1" + (parseInt(box_id[1]) + 1).toString().textContent);
+	box[2];
 };
 
 // Replays the entire game tep by step
 function replayGame(game_state){
 
 	// Chops off the moves from a string into an array
-	var moves = game_state.match(/(.{3})/g);
+	var moves = game_state.match(/(.{2})/g);
 
 	// Insert moves into coresponding boxes
-	$.each(moves, function(count, value){
-    var box = document.getElementById('' + parseInt(moves[count][0]) + parseInt(moves[count][1]) + '');
+	$.each(moves, function(index, value){
+		var box = document.getElementById(value[0]);
 
 		// Set delay to 1.5 seconds
 		setTimeout(function(){
-			box.innerHTML = value[2];
-		}, count * 1500);
+			box.innerHTML = moves[index][1];
+		}, index * 1500);
 	});
 };
 
