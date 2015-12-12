@@ -19,5 +19,5 @@ end
 get '/table' do
 	@username = User.find(session[:user_id])
 	@games = Game.find_available_games
-	erb :lobby , layout: false
+	erb :lobby #, layout: false
 end
