@@ -7,10 +7,10 @@ $(document).ready(function() {
   player_shape = "x"
 
 	drawBoard();
-	// populateBoard(game_state);
-	// playerMove();
+	populateBoard(game_state);
+	playerMove();
 
-	replayGame(game_state);
+	// replayGame(game_state);
   
 });
 
@@ -98,24 +98,26 @@ function playerMove(){
 };
 
 // Check the board for a winner
-function winningCondition(box_id){
+function winningCondition(current_box){
+
 	if(box_id[0] === "0"){
-		boxBelow(box_id);
+		box = document.getElementById(box_id[1]).textContent();
+		
 	}
-	return true;
+	return false;
 };
 
-// Get value of box below
-function boxBelow(box_id){
-	box = document.getElementById((parseInt(box_id[0]) + 1).toString() + box_id[1]);
-	return box.textContent;
-};
+// // Get value of two other boxes
+// function getBoxValue(box_id){
+// 	box = document.getElementById((parseInt(box_id[0]) + 1).toString() + box_id[1]);
+// 	return box.textContent;
+// };
 
-// Get value of box diagonal left below
-function boxBelowLeft(box_id){
-	box = document.getElementById("1" + (parseInt(box_id[1]) + 1).toString().textContent);
-	box[2];
-};
+// // Get value of box diagonal left below
+// function boxBelowLeft(box_id){
+// 	box = document.getElementById("1" + (parseInt(box_id[1]) + 1).toString().textContent);
+// 	box[2];
+// };
 
 // Replays the entire game tep by step
 function replayGame(game_state){
@@ -133,22 +135,3 @@ function replayGame(game_state){
 		}, index * 1500);
 	});
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
