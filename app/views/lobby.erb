@@ -1,25 +1,19 @@
-<div class="game-container">
-  <button class="button">Start new game</button>&nbsp;
-  <button class="button">Join a game</button>
-</div>
 <div id="user-container">
 	<h3>Your stats</h3>
-	<table>
-		<tr>
-			<td>Games played</td>
-			<td>: 0</td>
-		</tr>
-		<tr>
-			<td>Games won</td>
-			<td>: 0</td>
-		</tr>
-		<tr>
-			<td>Games draw</td>
-			<td>: 0</td>
-		</tr>
-		<tr>
-			<td>Games lost</td>
-			<td>: 0</td>
-		</tr>
-	</table>
+	<span>Games played: 0</span>
+	<span>Games won: 0</span>
+	<span>Games draw: 0</span>
+	<span>Games lost: 0</span>
+</div>
+<div class="game-container">
+	<% if @games %>
+		<ul>
+			<% @games.each_with_index do |game, index| %>
+				<li><%= index + 1 %>. <%= game.find_player_one %> <a href="/join_game/<%= game.id %>"><button class="button">Join game</button></a></li>
+			<% end %>
+		</ul>
+	<% else %>
+		<p>No available games</p>
+	<% end %>
+	<a href="/create_game"><button class="button">Start new game</button></a>
 </div>
