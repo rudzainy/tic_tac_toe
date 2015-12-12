@@ -10,5 +10,6 @@ get '/join_game/:game_id' do
 end
 
 get '/game/:game_id' do
+	@game = Game.find(params[:game_id])
 	erb :game
 end
