@@ -1,30 +1,29 @@
 <div id="user-container">
-	<h3>Your stats</h3>
-	<span>Games played: 0</span>
-	<span>Games won: 0</span>
-	<span>Games draw: 0</span>
-	<span>Games lost: 0</span>
+  <h3>Your stats</h3>
+  <span>Games played: 0</span>
+  <span>Games won: 0</span>
+  <span>Games draw: 0</span>
+  <span>Games lost: 0</span>
 </div>
 <hr>
 <div id="game-container">
-	<% if @games %>
-		<div>
-			<% @games.each_with_index do |game, index| %>
-				<div class="left">
-					<%= index + 1 %>. <%= game.find_player_one %>
-				</div>
-				<div class="right">
-					<a href="/join_game/<%= game.id %>"><button class="button">Join game</button></a>
-				</div>
-				<div class="clearfix"></div>
-				<hr>
-			<% end %>
-		</div>
-	<% else %>
-			<p>No available games</p>
-	<% end %>
-	<div class="clearfix"></div>
-	<div>
-		<a href="/create_game"><button id="start-new-game" class="button">Start new game</button></a>
-	</div>
+  <% if @games %>
+    <div id="game-list">
+      <% @games.each do |game| %>
+        <div class="left p-top-10">
+          <%= game.find_player_one %>
+        </div>
+        <div class="right p-bottom-10">
+          <a href="/join_game/<%= game.id %>"><button class="button<%= " disabled" if game.player1_id == current_user.id %>" <%= "disabled" if game.player1_id == current_user.id %>>Join game</button></a>
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+      <% end %>
+    </div>
+  <% else %>
+      <p>No available games</p>
+  <% end %>
+</div>
+<div id="start-game-container">
+  <a href="/create_game"><button id="start-new-game" class="button">Start new game</button></a>
 </div>

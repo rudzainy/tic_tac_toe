@@ -11,17 +11,17 @@ $(document).ready(function() {
 	playerMove();
 
 	// replayGame(game_state);
-  
+
 });
 
 // Draws the game board
 function drawBoard(){
-	
+
 	var row = 0;
 	var index = 0;
 
 	// Iterate each row of the board
-	while(row < 3) {
+	while(row < 3){
 		if(row === 0){
 			var position = "left";
 		}
@@ -50,7 +50,7 @@ function drawBoard(){
 		}
 		$('#board-container').append('</div>')
 		row++;
-	}	
+	}
 };
 
 // Populate board with previous moves
@@ -58,7 +58,7 @@ function populateBoard(game_state){
 
 	// Chops off the moves from a string into an array
 	var moves = game_state.match(/(.{2})/g);
- 	
+
 	// Insert moves into coresponding boxes
 	$.each(moves, function(index, value){
 		var box = document.getElementById(value[0]);
@@ -80,7 +80,7 @@ function playerMove(){
 			// Display the last move on the board
 			var box = document.getElementById(box_id[0]);
 			box.innerHTML = player_shape;
-			
+
 			// Disable the entire board
 			var all_box = document.getElementsByClassName('box')
 			$.each(all_box, function(index, box){
@@ -102,7 +102,7 @@ function winningCondition(current_box){
 
 	if(box_id[0] === "0"){
 		box = document.getElementById(box_id[1]).textContent();
-		
+
 	}
 	return false;
 };
