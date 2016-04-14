@@ -6,7 +6,7 @@
 	<span>Games lost: 0</span>
 </div>
 <hr>
-<div class="game-container">
+<div id="game-container">
 	<% if @games %>
 		<div>
 			<% @games.each_with_index do |game, index| %>
@@ -16,7 +16,7 @@
 				<div class="right">
 					<a href="/join_game/<%= game.id %>"><button class="button">Join game</button></a>
 				</div>
-				<div class="cleaarfix"></div>
+				<div class="clearfix"></div>
 				<hr>
 			<% end %>
 		</div>

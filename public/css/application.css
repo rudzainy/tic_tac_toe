@@ -19,10 +19,12 @@ hr {
 
 .left {
 	float: left;
+	padding-top: 10px;
 }
 
 .right {
 	float: right;
+	padding-bottom: 10px;
 }
 
 .clearfix {
@@ -110,7 +112,7 @@ hr {
 	color: white;
 	background-color: #FFA900;
 	border-radius: .2rem;
-	cursor: pointer; 
+	cursor: pointer;
 	cursor: hand;
 	border: none;
 }
