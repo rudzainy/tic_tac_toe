@@ -12,5 +12,10 @@ end
 
 get '/game/:game_id' do
 	@game = Game.find(params[:game_id])
+	if current_user.id == @game.player1_id
+		@player_shape = "x"
+	else
+		@player_shape = "o"
+	end
 	erb :game
 end

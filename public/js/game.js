@@ -4,7 +4,7 @@ $(document).ready(function() {
   game_state = "2x4o6x8o0x";
 
   // Set the player's shape either x or o
-  player_shape = "x"
+  player_shape = $('#player_shape').val();
 
 	drawBoard();
 	populateBoard(game_state);
@@ -92,7 +92,7 @@ function playerMove(){
 		};
 		if(winningCondition(box_id) === true){
 			winner = player;
-			debugger
+			debugger;
 		}
 	});
 };
@@ -100,8 +100,8 @@ function playerMove(){
 // Check the board for a winner
 function winningCondition(current_box){
 
-	if(box_id[0] === "0"){
-		box = document.getElementById(box_id[1]).textContent();
+	if(current_box[0] === "0"){
+		box = document.getElementById(current_box[1]).textContent();
 
 	}
 	return false;
