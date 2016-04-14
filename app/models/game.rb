@@ -12,7 +12,7 @@ class Game < ActiveRecord::Base
   	return user.username
   end
 
-  def self.find_player_two
+  def find_player_two
   	game = Game.find(self.id)
   	user = User.find(game.player2_id)
   	return user.username

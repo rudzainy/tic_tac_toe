@@ -5,15 +5,26 @@
 	<span>Games draw: 0</span>
 	<span>Games lost: 0</span>
 </div>
+<hr>
 <div class="game-container">
 	<% if @games %>
-		<ul>
+		<div>
 			<% @games.each_with_index do |game, index| %>
-				<li><%= index + 1 %>. <%= game.find_player_one %> <a href="/join_game/<%= game.id %>"><button class="button">Join game</button></a></li>
+				<div class="left">
+					<%= index + 1 %>. <%= game.find_player_one %>
+				</div>
+				<div class="right">
+					<a href="/join_game/<%= game.id %>"><button class="button">Join game</button></a>
+				</div>
+				<div class="cleaarfix"></div>
+				<hr>
 			<% end %>
-		</ul>
+		</div>
 	<% else %>
-		<p>No available games</p>
+			<p>No available games</p>
 	<% end %>
-	<a href="/create_game"><button class="button">Start new game</button></a>
+	<div class="clearfix"></div>
+	<div>
+		<a href="/create_game"><button id="start-new-game" class="button">Start new game</button></a>
+	</div>
 </div>

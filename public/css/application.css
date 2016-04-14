@@ -12,6 +12,24 @@ th {
   text-align: left;
 }
 
+hr {
+	clear: both;
+	margin-top: 10px;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clearfix {
+	clear: both;
+	margin: 10px;
+}
+
 .box {
 	background-color: #00D7EA;
 	width: 100px;

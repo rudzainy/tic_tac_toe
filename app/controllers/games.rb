@@ -1,6 +1,6 @@
-get '/create_game' do
+post '/create_game' do
 	session[:game_id] = Game.create(player1_id: current_user.id)
-	redirect to '/lobby'
+	# redirect to '/lobby'
 end
 
 get '/join_game/:game_id' do
