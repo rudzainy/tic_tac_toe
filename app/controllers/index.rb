@@ -20,6 +20,10 @@ get '/lobby' do
   end
 end
 
+get '/update_lobby' do
+  Game.find_new_games(current_user.id).to_json
+end
+
 # FOR REFRESHING AVAILABLE GAMES IN LOBBY
 get '/table' do
   @username = User.find(session[:user_id])
